@@ -1,1 +1,1 @@
-# aplikaciaze mushaobdnen giorgi paksashvili, tazo mirianashvili da nika chareqishvili
+# aplikaciaze mushaobdnen giorgi paksashvili da tazo mirianashvili
