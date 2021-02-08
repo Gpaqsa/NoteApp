@@ -28,7 +28,7 @@ import com.google.firebase.auth.FirebaseUser;
      private EditText editTextemail, editTextpassword;
      private Button singIn;
      private FirebaseAuth mAuth;
-     private TextView forgotpassword;
+    private TextView forgotpassword;
 
      @Override
      protected void onCreate(Bundle savedInstanceState) {
@@ -70,12 +70,18 @@ import com.google.firebase.auth.FirebaseUser;
          userLogin();
          }
 
+
      private void userLogin() {
          String email = editTextemail.getText().toString().trim();
          String password = editTextpassword.getText().toString().trim();
 
          if (email.isEmpty()){
              editTextemail.setError("Email is required");
+             editTextemail.requestFocus();
+             return;
+         }
+         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+             editTextemail.setError("please enter a valid email!");
              editTextemail.requestFocus();
              return;
          }
