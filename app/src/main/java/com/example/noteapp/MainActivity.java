@@ -103,6 +103,7 @@ import com.google.firebase.auth.FirebaseUser;
 
                  if ( task.isSuccessful() ){
                      FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                     startActivity(new Intent(MainActivity.this, NoteActivity.class));
                      if(user.isEmailVerified()){
                          Toast.makeText(MainActivity.this, "Emails is verified!", Toast.LENGTH_SHORT).show();
 
