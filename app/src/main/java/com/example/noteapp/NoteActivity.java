@@ -59,6 +59,9 @@ public class NoteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(layout.activity_note);
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.note_bar);
+        setActionBar(toolbar);
+
         mDatabase= FirebaseDatabase.getInstance().getReference();
 
         add_items = (EditText) findViewById(id.add_items);
@@ -72,8 +75,7 @@ public class NoteActivity extends AppCompatActivity {
             getSupportActionBar().hide();
         }
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.note_bar);
-        setActionBar(toolbar);
+
 
 
         logout.setOnClickListener(new View.OnClickListener() {
@@ -143,13 +145,18 @@ public class NoteActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected( MenuItem item) {
-        int id = item.getItemId();
+        switch(item.getItemId()){
+            case R.id.additemid:
+                Toast.makeText(this,"you added item",Toast.LENGTH_SHORT).show();
+                return true;
+            case  R.id.singOut:
+                startActivity(new Intent( NoteActivity.this, MainActivity.class));
+                Toast.makeText(getApplicationContext(), "You click logout", Toast.LENGTH_SHORT).show();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
 
-        if ( id == R.id.singOut ) {
-            startActivity(new Intent( NoteActivity.this, MainActivity.class));
-            Toast.makeText(getApplicationContext(), "You click logout", Toast.LENGTH_SHORT).show();
         }
-        return true;
     }
 
 }
