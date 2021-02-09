@@ -51,51 +51,54 @@ public class NoteActivity extends AppCompatActivity {
 
     private ArrayList<String> arrayList = new ArrayList<>();
     private ArrayAdapter<String> adapter;
- //   private ArrayAdapter<String> itemsAdapter;
+    //   private ArrayAdapter<String> itemsAdapter;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(layout.activity_note);
+        super.onCreate(savedInstanceState);
+        setContentView(layout.activity_note);
 
-            mDatabase= FirebaseDatabase.getInstance().getReference();
+        mDatabase= FirebaseDatabase.getInstance().getReference();
 
-            add_items = (EditText) findViewById(id.add_items);
-            addbtn = (Button) findViewById(id.addbtn);
-            list_view = (ListView) findViewById(id.list_view);
-            logout = (Button) findViewById(id.singOut) ;
+        add_items = (EditText) findViewById(id.add_items);
+        addbtn = (Button) findViewById(id.addbtn);
+        list_view = (ListView) findViewById(id.list_view);
+        logout = (Button) findViewById(id.singOut) ;
 
-            adapter = new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, arrayList);
+        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, arrayList);
 
+        if(getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
 
-        Toolbar toolbar = (Toolbar) findViewById(id.note_bar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.note_bar);
         setActionBar(toolbar);
 
 
-             logout.setOnClickListener(new View.OnClickListener() {
-                 @Override
-                 public void onClick(View v) {
-                     FirebaseAuth.getInstance().signOut();
-                     startActivity(new Intent( NoteActivity.this, MainActivity.class));
-                 }
-             });
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent( NoteActivity.this, MainActivity.class));
+            }
+        });
 
-             list_view.setAdapter(adapter);
-                addbtn.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        mDatabase.push().setValue(add_items.getText().toString());
+        list_view.setAdapter(adapter);
+        addbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mDatabase.push().setValue(add_items.getText().toString());
 
-                    }
-                });
+            }
+        });
 
 
-                    
-                    mDatabase.addChildEventListener(new ChildEventListener() {
+
+        mDatabase.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                
+
                 String string = snapshot.getValue(String.class);
                 arrayList.add(string);
                 adapter.notifyDataSetChanged();
@@ -133,7 +136,8 @@ public class NoteActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu, menu);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
         return true;
     }
 
@@ -142,6 +146,7 @@ public class NoteActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         if ( id == R.id.singOut ) {
+            startActivity(new Intent( NoteActivity.this, MainActivity.class));
             Toast.makeText(getApplicationContext(), "You click logout", Toast.LENGTH_SHORT).show();
         }
         return true;
