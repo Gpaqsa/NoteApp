@@ -3,12 +3,15 @@ package com.example.noteapp;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
+import android.widget.Toolbar;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -19,6 +22,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -32,6 +36,8 @@ import com.google.firebase.database.ValueEventListener;
 import java.net.HttpCookie;
 import java.sql.DatabaseMetaData;
 import java.util.ArrayList;
+
+import static com.example.noteapp.R.*;
 
 public class NoteActivity extends AppCompatActivity {
     private DatabaseReference mDatabase;
@@ -51,21 +57,20 @@ public class NoteActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_note);
+            setContentView(layout.activity_note);
 
             mDatabase= FirebaseDatabase.getInstance().getReference();
 
-            add_items = (EditText) findViewById(R.id.add_items);
-            addbtn = (Button) findViewById(R.id.addbtn);
-            list_view = (ListView) findViewById(R.id.list_view);
-            logout = (Button) findViewById(R.id.singOut) ;
+            add_items = (EditText) findViewById(id.add_items);
+            addbtn = (Button) findViewById(id.addbtn);
+            list_view = (ListView) findViewById(id.list_view);
+            logout = (Button) findViewById(id.singOut) ;
 
             adapter = new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, arrayList);
 
 
-             if(getSupportActionBar() != null) {
-                 getSupportActionBar().hide();
-             }
+        Toolbar toolbar = (Toolbar) findViewById(id.note_bar);
+        setActionBar(toolbar);
 
 
              logout.setOnClickListener(new View.OnClickListener() {
@@ -126,9 +131,21 @@ public class NoteActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
 
+    @Override
+    public boolean onOptionsItemSelected( MenuItem item) {
+        int id = item.getItemId();
 
-
+        if ( id == R.id.singOut ) {
+            Toast.makeText(getApplicationContext(), "You click logout", Toast.LENGTH_SHORT).show();
+        }
+        return true;
+    }
 
 }
 

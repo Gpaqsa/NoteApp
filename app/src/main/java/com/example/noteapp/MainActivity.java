@@ -65,8 +65,8 @@ import com.google.firebase.auth.FirebaseUser;
      }
 
      public void loginbtn(View v) {
-         Intent intent = new Intent(MainActivity.this, NoteActivity.class);
-         startActivity(intent);
+    //     Intent intent = new Intent(MainActivity.this, NoteActivity.class);
+    //     startActivity(intent);
          userLogin();
          }
 
