@@ -1,5 +1,6 @@
 package com.example.noteapp;
 
+//import androidx.annotation.NonNull;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -44,7 +45,7 @@ public class NoteActivity extends AppCompatActivity {
     private ListView list_view;
     private EditText add_items;
     private Button addbtn;
-    private Button logout;
+  //  private Button logout;
 
 
     private  String userId;
@@ -66,29 +67,15 @@ public class NoteActivity extends AppCompatActivity {
         add_items = (EditText) findViewById(id.add_items);
         addbtn = (Button) findViewById(id.addbtn);
         list_view = (ListView) findViewById(id.list_view);
-        logout = (Button) findViewById(id.singOut) ;
+   //     logout = (Button) findViewById(id.singOut) ;
 
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, arrayList);
-
-
-
-
-
-
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent( NoteActivity.this, MainActivity.class));
-            }
-        });
 
         list_view.setAdapter(adapter);
         addbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mDatabase.push().setValue(add_items.getText().toString());
-
             }
         });
 
