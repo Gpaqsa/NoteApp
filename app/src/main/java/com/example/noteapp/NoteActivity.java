@@ -3,7 +3,7 @@ package com.example.noteapp;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import android.widget.Toolbar;
+import androidx.appcompat.widget.Toolbar;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -22,7 +22,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
+
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -59,8 +59,7 @@ public class NoteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(layout.activity_note);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.note_bar);
-        setActionBar(toolbar);
+
 
         mDatabase= FirebaseDatabase.getInstance().getReference();
 
@@ -71,9 +70,7 @@ public class NoteActivity extends AppCompatActivity {
 
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, arrayList);
 
-        if(getSupportActionBar() != null) {
-            getSupportActionBar().hide();
-        }
+
 
 
 
@@ -160,8 +157,5 @@ public class NoteActivity extends AppCompatActivity {
     }
 
 }
-
-
-
 
 
