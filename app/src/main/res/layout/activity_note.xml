@@ -7,20 +7,10 @@
     tools:context=".NoteActivity">
 
 
-    <include
-        android:id="@+id/note_bar"
-        layout="@layout/note_bar"
-        app:layout_constraintBottom_toTopOf="@+id/list_view"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
     <ListView
         android:id="@+id/list_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="75dp"
         android:layout_marginBottom="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -44,9 +34,9 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/add_items"
+        app:layout_constraintStart_toStartOf="@+id/add_items"
         app:layout_constraintTop_toBottomOf="@+id/list_view"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.666" />
 
     <EditText
         android:id="@+id/add_items"
