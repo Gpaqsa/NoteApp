@@ -21,29 +21,15 @@
 
     </ListView>
 
-    <Button
-        android:id="@+id/addbtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:backgroundTint="#FFC107"
-        android:text="Add"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/add_items"
-        app:layout_constraintTop_toBottomOf="@+id/list_view"
-        app:layout_constraintVertical_bias="0.666" />
+
 
     <EditText
         android:id="@+id/add_items"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/list_view"
-        android:layout_toStartOf="@+id/addbtn"
         android:ems="10"
-        android:hint="Add items"
+        android:hint="@string/addItems"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

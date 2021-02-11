@@ -3,5 +3,17 @@
     <string name="appLogoAlt">Application Description</string>
     <string name="splashAppTitle">NoteApp</string>
     <string name="splashAppDescription">Created by Giorgi paksashvili, Tazo mirianashvili</string>
-
+    <string name="Emailaddress">Email </string>
+    <string name="password">Password</string>
+    <string name="loginBtn">Login</string>
+    <string name="forgotPasswordBtn">Forgot Password</string>
+    <string name="Register">Register</string>
+    <string name="resetpassword">Reset Password</string>
+    <string name="tittleDescription">your awesome app</string>
+    <string name="fullname">Fullname</string>
+    <string name="age">Age</string>
+    <string name="ADD">Add</string>
+    <string name="addItems">Add Items</string>
+    <string name="logOut">Log Out</string>
+    <string name="registetUser">Register User</string>
 </resources>

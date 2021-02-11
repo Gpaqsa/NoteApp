@@ -44,7 +44,7 @@ public class NoteActivity extends AppCompatActivity {
     private DatabaseReference mDatabase;
     private ListView list_view;
     private EditText add_items;
-    private Button addbtn;
+  //  private Button addbtn;
   //  private Button logout;
 
 
@@ -65,19 +65,14 @@ public class NoteActivity extends AppCompatActivity {
         mDatabase= FirebaseDatabase.getInstance().getReference();
 
         add_items = (EditText) findViewById(id.add_items);
-        addbtn = (Button) findViewById(id.addbtn);
+  //    addbtn = (Button) findViewById(id.addbtn);
         list_view = (ListView) findViewById(id.list_view);
    //     logout = (Button) findViewById(id.singOut) ;
 
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, arrayList);
 
         list_view.setAdapter(adapter);
-        addbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mDatabase.push().setValue(add_items.getText().toString());
-            }
-        });
+
 
 
 
@@ -131,6 +126,7 @@ public class NoteActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected( MenuItem item) {
         switch(item.getItemId()){
             case R.id.additemid:
+                mDatabase.push().setValue(add_items.getText().toString());
                 Toast.makeText(this,"you added item",Toast.LENGTH_SHORT).show();
                 return true;
             case  R.id.singOut:
